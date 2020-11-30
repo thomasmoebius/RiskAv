@@ -4,12 +4,9 @@ A joint research paper on risk aversion
 ### Calls history
 https://hackmd.io/N3m6s7EkRzeHieA7cOO0Fw
 
-### Overleaf project
-https://ru.overleaf.com/project/5fc4b9aca1e7b8477619c5d0
-
 ### Toy model
-pdf: https://www.dropbox.com/s/baijeuozklevb2o/Toy-RiskAv.pdf?dl=0
-GAMS: https://www.dropbox.com/s/dywsr9ks2fykqo5/Toy-RiskAv.gms?dl=0
+- PDF: https://www.dropbox.com/s/baijeuozklevb2o/Toy-RiskAv.pdf?dl=0
+- GAMS: https://www.dropbox.com/s/dywsr9ks2fykqo5/Toy-RiskAv.gms?dl=0
 
 ### Progress track
 Ready
