@@ -1,0 +1,12 @@
+**/.lst
+**/.lxi
+**/.log
+**/.~gm
+**/.gdx
+*.log
+*.lst
+*.lxi
+*.tmp
+*.~gm
+*.gdx
+*.gpr
