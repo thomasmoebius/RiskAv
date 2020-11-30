@@ -4,13 +4,10 @@ A joint research paper on risk aversion
 ### Calls history
 https://hackmd.io/N3m6s7EkRzeHieA7cOO0Fw
 
-### Toy model
-- PDF: https://www.dropbox.com/s/baijeuozklevb2o/Toy-RiskAv.pdf?dl=0
-- GAMS: https://www.dropbox.com/s/dywsr9ks2fykqo5/Toy-RiskAv.gms?dl=0
-
 ### Progress track
 Ready
-- Risk-aversion implemented - CVaR Approach
+- A toy model for testing out CVaR approach
+- Risk-aversion (CVaR) implemented 
 - TYNDP-based set of 22 scenarios 
 
 To-Do
