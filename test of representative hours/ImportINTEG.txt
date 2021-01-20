@@ -1,15 +1,12 @@
 
-        set=N               rng=nodemaps!B2       rdim=1
-        set=P               rng=nodemaps!D60      rdim=1
-        set=W               rng=nodemaps!D37:D57  rdim=1
-
-        set=co              rng=nodemaps!F37:F57  rdim=1
-        set=coo             rng=nodemaps!F37:F56  rdim=1
+        set=N               rng=nodes!B2  rdim=1
+        set=co              rng=nodes!B2  rdim=1
+        set=coo             rng=nodes!B2  rdim=1
 
         set=i               Rng=Technology!A4    Cdim=0 Rdim=1
         Par=techup          Rng=Technology!A1    Cdim=3 Rdim=1
         Par=genup           Rng=Capacity!A1      Cdim=3 Rdim=2
-        Par=timeup          Rng=ElDemTS!A1      Cdim=3 Rdim=1
+        Par=timeup          Rng=ElDemTS!A1       Cdim=3 Rdim=1
         Par=RESup           Rng=RESdata!A1       Cdim=2 Rdim=1
         Par=nodeup          Rng=Country!A1       Cdim=3 Rdim=1
         Par=co2_price_upload Rng=Technology!L23   Cdim=1 Rdim=1

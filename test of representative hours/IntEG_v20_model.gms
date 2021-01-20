@@ -37,7 +37,7 @@ EQUATIONS
 ;
 
 OBJECTIVE_GLOBAL..
-         Cost_GLobal =e= (COST_EL)*inf_factor
+         Cost_GLobal =e= (COST_EL)*inf_factor/1e6
          ;
 
 EQUATIONS

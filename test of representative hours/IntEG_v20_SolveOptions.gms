@@ -16,7 +16,7 @@ CAP_new.fx(ReservT,co,year)      =0      ;
     LSEWglobal.dictfile=0;
 *    LSEWglobal.savepoint=1;
 *    LSEWglobal.SCALEOPT = 1;
-*    OBJECTIVE_GLOBAL.scale = 1e006;
+    OBJECTIVE_GLOBAL.scale = 1e006;
 
 * Turn off the listing of the input file
 * Turn off the listing and cross-reference of the symbols used
