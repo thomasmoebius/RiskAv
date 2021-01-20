@@ -35,27 +35,40 @@ number_scenarios   = card(scen);
         vc_f(i,co,year,scen)                = (fc_upload(i,co,year,"EUCO_up")+ carb_cont(i)*co2_price_upload('EUCO_up',year))/ eta_f(i,co,year);
         vc_m(i,co,year,scen)                = (fc_upload(i,co,year,"EUCO_up")+ carb_cont(i)*co2_price_upload('EUCO_up',year))/ eta_m(i,co,year);
 
+
 set
-    it iterations /i0/;
+    j   /j1*j8/;
 
 parameter
-    report (it,*);
+    report (j,*);
+
 
 *#############################        STEP 2: SOLVING DP        #################################
-loop (it,
+loop (j,
 
-t /t25, t50/;
+t(t_all) $ (ord(j) = 1) = h1(t_all) ;
+t(t_all) $ (ord(j) = 2) = h2(t_all) ;
+t(t_all) $ (ord(j) = 3) = h4(t_all) ;
+t(t_all) $ (ord(j) = 4) = h10(t_all) ;
+t(t_all) $ (ord(j) = 5) = h25(t_all) ;
+t(t_all) $ (ord(j) = 6) = h50(t_all) ;
+t(t_all) $ (ord(j) = 7) = h100(t_all) ;
+t(t_all) $ (ord(j) = 8) = h200(t_all) ;
+
+        t_number              = card(t);
+        hour_scaling          = t_number/8760;
+        RHS                   = 8760/t_number;
 
     SOLVE LSEWglobal using lp minimizing Cost_GLobal;
 
 $include IntEG_v20_resprocess.gms
 
-report(it,'OBJ')  =  Cost_GLobal.l;
-report(it,'Inv-CCGT')  =  new_cap('cn_DE','CCGT','y2030')         ;
-report(it,'Inv-OCGT')  =  new_cap('cn_DE','OCGT','y2030')         ;
-report(it,'FLH-CCGT')  =  FullLoadHours('cn_DE','y2030','CCGT')   ;
-report(it,'FLH-OCGT')  =  FullLoadHours('cn_DE','y2030','OCGT')   ;
-report(it,'curt_RES')  =  curt_RES('cn_DE','y2030')               ;
+report(j,'OBJ')             =  Cost_GLobal.l;
+report(j,'Inv-CCGT ')       =  new_cap('cn_DE','CCGT','y2030')         ;
+report(j,'Inv-OCGT ')       =  new_cap('cn_DE','OCGT','y2030')         ;
+report(j,'FLH-CCGT ')       =  FullLoadHours('cn_DE','y2030','CCGT')   ;
+report(j,'FLH-OCGT')        =  FullLoadHours('cn_DE','y2030','OCGT')   ;
+report(j,'curt_RES[TWh]')   =  curt_RES('cn_DE','y2030') / 1e6             ;
 
     );
 

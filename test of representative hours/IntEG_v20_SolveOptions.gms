@@ -2,6 +2,9 @@
 
 CAP_new.fx('RoR',co,year)        =0      ;
 CAP_new.fx('Biomass',co,year)    =0      ;
+CAP_new.fx('nuclear',co,year)    =0      ;
+CAP_new.fx('Hard Coal',co,year)  =0      ;
+CAP_new.fx('lignite',co,year)    =0      ;
 CAP_new.fx(ReservT,co,year)      =0      ;
 *CAP_new.fx(i,co,'y2015')         =0      ;
 

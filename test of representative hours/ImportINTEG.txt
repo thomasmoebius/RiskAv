@@ -13,4 +13,3 @@
         Par=ntc             Rng=NTC!A1           Cdim=2 Rdim=1
         Par=ntc_dist        Rng=NTC!A48:T69      Cdim=1 Rdim=1
         Par=heat_factor     Rng=time!H2          Cdim=1 Rdim=1
-

@@ -1,2 +1,11 @@
-        set=time rng=time!C1          rdim=4
-        set=t    rng=time_periods!C2  rdim=1
+        set=time    rng=time!C1          rdim=4
+        set=t       rng=time_periods!B2  rdim=1
+
+        set=h1      rng=time_periods!B2  rdim=1
+        set=h2      rng=time_periods!D2  rdim=1
+        set=h4      rng=time_periods!F2  rdim=1
+        set=h10     rng=time_periods!H2  rdim=1
+        set=h25     rng=time_periods!J2  rdim=1
+        set=h50     rng=time_periods!L2  rdim=1
+        set=h100    rng=time_periods!N2  rdim=1
+        set=h200    rng=time_periods!P2  rdim=1

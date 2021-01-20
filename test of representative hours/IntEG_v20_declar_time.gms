@@ -6,10 +6,19 @@ $Setglobal  YEARS_inc  y2030
 SETS
     t_all               all hours of a year                /t1*t8760/
     t(t_all)            all hours to be solved
+
+    h1(t_all)
+    h2(t_all)
+    h4(t_all)
+    h10(t_all)
+    h25(t_all)
+    h50(t_all)
+    h100(t_all)
+    h200(t_all)
 ;
 
 SETS
-    Year_all            all possible years              /y2013*y2027,y2030/        
+    Year_all            all possible years              /y2013*y2027,y2030/
     Year(Year_all)      year modelled                   /%YEARS_inc%/
     month               set of month                    /m1*m12/
     day                 days in a year                  /day1*day365/
@@ -36,18 +45,27 @@ SETS
 
 
 *###############################################################################
-*                               READING and MAPPING 
+*                               READING and MAPPING
 *###############################################################################
 
 *Don't write comments inside onecho file!
 $onecho > Import_time.txt
-        set=time rng=time!C1          rdim=4
-        set=t    rng=time_periods!C2  rdim=1
+        set=time    rng=time!C1          rdim=4
+        set=t       rng=time_periods!B2  rdim=1
+
+        set=h1      rng=time_periods!B2  rdim=1
+        set=h2      rng=time_periods!D2  rdim=1
+        set=h4      rng=time_periods!F2  rdim=1
+        set=h10     rng=time_periods!H2  rdim=1
+        set=h25     rng=time_periods!J2  rdim=1
+        set=h50     rng=time_periods!L2  rdim=1
+        set=h100    rng=time_periods!N2  rdim=1
+        set=h200    rng=time_periods!P2  rdim=1
 $offecho
 
 $call GDXXRW I=%datadir%%DataIn%.xlsx O=%datadir%Time.gdx cmerge=1 @Import_time.txt
 $gdxin %datadir%Time.gdx
-$LOAD time, t
+$LOAD time, t, h1, h2, h4, h10, h25, h50, h100, h200
 $gdxin
 
 *                               MAPPING TIME
@@ -76,4 +94,5 @@ loop(year,
 
 
 *                               CHECK TIME INPUT
-*execute_unload '%datadir%1_check_timeinput.gdx'
+* execute_unload '%datadir%1_check_timeinput.gdx'
+* $stop

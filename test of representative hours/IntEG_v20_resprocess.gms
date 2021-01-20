@@ -6,8 +6,8 @@
 %Invest_gen%    new_cap(n,i,year)              = CAP_new.l(i,n,year)-CAP_new.l(i,n,year-1)   ;
 
 
-                curt_RES(n,year)                   = sum( (t,ResT),(cap_existing(rest,n,year,'EUCO')* pf(rest,n,t)-G.l(ResT,n,t,year,'EUCO'))
-                                                   + (cap_existing('ror',n,year,'EUCO')*af('ror',n)-G.l('ror',n,t,year,'EUCO')));
+                curt_RES(n,year)              = sum( (t,ResT),(cap_existing(rest,n,year,'EUCO')* pf(rest,n,t)-G.l(ResT,n,t,year,'EUCO'))
+                                                   + (cap_existing('ror',n,year,'EUCO')*af('ror',n)-G.l('ror',n,t,year,'EUCO')))*RHS ;
 
 
                 FullLoadHours(n,year,i)$(cap_existing(i,n,year,'EUCO')

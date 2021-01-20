@@ -43,30 +43,30 @@ OBJECTIVE_GLOBAL..
 EQUATIONS
 
 OBJECTIVE_EL                                      minimizing total costs
-res_dem(t,co,year,allscen)                        energy balance (supply=demand)
-res_start(i,co,t,year,allscen)                startup restriction
-res_G_RES(i,co,t,year,allscen)                 maximum for RES generation depends on hourly pf anc cap_RES
-res_min_gen(i,co,t,year,allscen)              minimum generation
-res_max_gen(i,co,t,year,allscen)              maximum generation
-res_max_online(i,co,t,year,allscen)           maximum online restriction
+res_dem(t_all,co,year,allscen)                        energy balance (supply=demand)
+*res_start(i,co,t_all,year,allscen)                startup restriction
+res_G_RES(i,co,t_all,year,allscen)                 maximum for RES generation depends on hourly pf anc cap_RES
+res_min_gen(i,co,t_all,year,allscen)              minimum generation
+res_max_gen(i,co,t_all,year,allscen)              maximum generation
+res_max_online(i,co,t_all,year,allscen)           maximum online restriction
 max_capacity(i,co,year)                           maximum potential capacity [MW]
-storagelevel(t,i,co,year,allscen)             level of the PSP storage
-PSPmax(t,i,co,year,allscen)                   PSP power limitation to installed turbine capacity
-SHED_max(co,t,allscen,year)                       maximum shedding in a country
-storagelevel(t,i,co,year,allscen)             storage level at time t
-storagelevel_max(t,i,co,year,allscen)         max level of reservoir (upper basin)
+*storagelevel(t_all,i,co,year,allscen)             level of the PSP storage
+*PSPmax(t_all,i,co,year,allscen)                   PSP power limitation to installed turbine capacity
+SHED_max(co,t_all,allscen,year)                       maximum shedding in a country
+*storagelevel(t_all,i,co,year,allscen)             storage level at time t
+*storagelevel_max(t_all,i,co,year,allscen)         max level of reservoir (upper basin)
 
-reservoir_max_gen(i,co,t,year,allscen)
+reservoir_max_gen(i,co,t_all,year,allscen)
 reservoir_year_cap(i,co,year,allscen)
 
-Res_lineflow_1(co,coco,t,year,allscen)
-Res_lineflow_2(coco,co,t,year,allscen)
+Res_lineflow_1(co,coco,t_all,year,allscen)
+Res_lineflow_2(coco,co,t_all,year,allscen)
 
 res_new_cap(i,co,year)                   ensures that new cap has to be paid each year after construction
 res_new_NTC(co,coco,year)                built connections exist for all following years (new cap has to be paid each year after construction )
-RES_NTC_new_twoWay(co,coco,t,year)       the investment in a line affects both directions equally
+RES_NTC_new_twoWay(co,coco,t_all,year)   the investment in a line affects both directions equally
 
-CHP_restriction(co,t,year,allscen)       minimum production due to CHP
+CHP_restriction(co,t_all,year,allscen)       minimum production due to CHP
 ;
 
 OBJECTIVE_EL..
@@ -98,8 +98,10 @@ res_G_RES(rest,co,t,year,scen)..    G(rest,co,t,year,scen) =L= (cap_existing(res
 res_new_cap(i,co,year)..            CAP_new(i,co,year) =G= CAP_new(i,co,year-1)
 ;
 
+$ontext
 res_start(convt,co,t,year,scen)..        SU(convt,co,t,year,scen) =G= P_on(convt,co,t,year,scen)-P_ON(convt,co,t-1,year,scen)
 ;
+$offtext
 
 res_min_gen(convt,co,t,year,scen)..      P_on(convt,co,t,year,scen)*g_min(convt) =L= G(convt,co,t,year,scen)
 ;
@@ -122,6 +124,7 @@ max_capacity(i,co,year)..               CAP_new(i,co,year) =L= cap_max(i,co)
 SHED_max(co,t,scen,year)..              SHED(co,t,year,scen) =L= demand(co,t,year,scen)*0.2
 ;
 
+$ontext
 ##########################    PSP and Reservoirs   ###########################################
 
 storagelevel_max(t,stort,co,year,scen)..   StLevel(stort,co,t,year,scen) =l= (cap_existing(stort,co,year,scen))  * cpf
@@ -135,6 +138,7 @@ storagelevel(t,stort,co,year,scen)..       StLevel(stort,co,t,year,scen) =e=
 PSPmax(t,stort,co,year,scen)..             G(stort,co,t,year,scen)+P_PSP(stort,co,t,year,scen) =l= cap_existing(stort,co,year,scen)*af(stort,co)
 %Invest_gen%                                                      + CAP_new(stort,co,year)*af(stort,co)
 ;
+$offtext
 
 reservoir_max_gen(ReservT,co,t,year,scen)$cap_existing(ReservT,co,year,scen)..
                          G(ReservT,co,t,year,scen) =L= cap_existing(ReservT,co,year,scen)*af(ReservT,co)
@@ -142,7 +146,7 @@ reservoir_max_gen(ReservT,co,t,year,scen)$cap_existing(ReservT,co,year,scen)..
 reservoir_year_cap(ReservT,co,year,scen)$cap_existing(ReservT,co,year,scen)..
                          sum(t,G(ReservT,co,t,year,scen)) =L= cap_existing(ReservT,co,year,scen)*flh_Reservoir
 ;
-
+ 
 ***********       Network defintions and restrictions       ********************
 
 Res_lineflow_1(co,coco,t,year,scen)..

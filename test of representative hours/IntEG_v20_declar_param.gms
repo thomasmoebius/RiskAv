@@ -30,7 +30,7 @@
 
 *Time Varying load and RES parameters
         pf(i,n,t_all)                       hourly production factor for RES
-        demand(co,t,year,allscen)           electricity demand per year
+        demand(co,t_all,year,allscen)           electricity demand per year
         demand_upload(n,t_all,year,scen_up) electricity demand per year (scenario dependent upload)
         all_dem(n,year,scen_up)             overall consumption within one year for each country
         VoLa(co)                            value of lost adequacy
@@ -49,7 +49,7 @@
         RESup            upload for RES production factors
 
 *EVP Values
-    EVP_demand(co,t,year)
+    EVP_demand(co,t_all,year)
     EVP_cap_existing(i,co,year)
     EVP_fc(i,co,year)
     EVP_co2_price(year)
@@ -91,7 +91,6 @@ $onecho > ImportINTEG.txt
         Par=ntc             Rng=NTC!A1           Cdim=2 Rdim=1
         Par=ntc_dist        Rng=NTC!A48:T69      Cdim=1 Rdim=1
         Par=heat_factor     Rng=time!H2          Cdim=1 Rdim=1
-
 $offecho
 
 $call GDXXRW I=%datadir%%DataIn%.xlsx O=%datadir%%DataIn%.gdx cmerge=1 @ImportINTEG.txt
@@ -104,6 +103,7 @@ $LOAD co2_price_upload
 $LOAD ntc, ntc_dist, heat_factor
 
 $gdxin
+
 
 scalars
         hour_scaling            scaling investment costs to representitive hours
@@ -158,7 +158,7 @@ scalars
         cap_existing_upload(i,co,year,scen_up)=genup(scen_up,co,'installed Capacity [MW]',year,i);
 
 *Define parameters from  'timeup'
-        pf(ResT,co,t)=RESup(t,ResT,co);
+        pf(ResT,co,t_all)=RESup(t_all,ResT,co);
 *        all_dem(co,'y2015',scen_up) = nodeup(co,'overall demand','y2015','') ;
 *        all_dem(co,'y2020',scen_up) = nodeup(co,'overall demand','y2020','')    ;
 *        all_dem(co,'y2025',scen_up) = nodeup(co,'overall demand','y2025','')   ;
@@ -166,7 +166,7 @@ scalars
 
 *        demand_upload(co,t,'y2015',scen_up) = timeup(t,'y2015','real',co);
 *        demand_upload(co,t,'y2020',scen_up) = timeup(t,'y2020','best estimate',co) ;
-        demand_upload(co,t,'y2030',scen_up) = timeup(t,'y2030',scen_up,co);
+        demand_upload(co,t_all,'y2030',scen_up) = timeup(t_all,'y2030',scen_up,co);
 *        demand_upload(co,t,'y2025',scen_up) = demand_upload(co,t,'y2020',scen_up)+(demand_upload(co,t,'y2030',scen_up)-demand_upload(co,t,'y2020',scen_up))/2;
 
         VoLa(co) = nodeup(co,'VoLA','','') ;

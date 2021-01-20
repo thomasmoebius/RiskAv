@@ -22,11 +22,12 @@ $eolcom #
 *                            DIRECTORIRY and FILE MANAGEMENT
 *###############################################################################
 
+
 *Location of input files
 $set datadir    data\
 
 *  Currently all data is in one file
-$Set DataIn     Input_v2
+$Set DataIn     Input_T
 
 * version
 $setglobal GlobalSCEN v20
@@ -74,7 +75,7 @@ $setglobal Invest_gas_LNG    "*"  #Investments in LNG infrastructure
 
                               #RELATED TO ELECTRICITY  MODEL
 
-$setglobal Store        ""         #Storage
+$setglobal Store        "*"         #Storage
 $setglobal Shed         ""         #Load shedding
 $setglobal Trade        "*"         #Trade between markets
 $setglobal Startup      "*"        #Startups
@@ -85,7 +86,6 @@ $setglobal CHP          ""         #considering minim production due to CHP
 $ifthen "%Startup%" == ""   $setglobal Exc_startup "*"
 $else                       $setglobal Exc_startup ""
 $endif
-
 
 *###############################################################################
 *                               DECLARING & MAPPING TIME
