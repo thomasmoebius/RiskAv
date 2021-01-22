@@ -1,4 +1,4 @@
-$Title IntEG version 21 (16 Nov 2020)
+$Title IntEG-2 (Jan 2020)
 
 $ontext
 energy dispatch & investment model risk aversion analysis
@@ -71,7 +71,7 @@ $setglobal Invest_incl_Entsoe_additions "*"       # empty field activates NTC ad
 $setglobal CHP                   ""              # considering minim production due to CHP
 
 $setglobal Vola_const            "*"              # empty field activates a constant VoLA in all countries, (*) activates a country specific VoLA
-$setglobal upload_NTC_plan       "*"             # when empty: existing NTC´s are replaced by an investment plan from a previous model run, when (*): TYNDP NTC´s
+$setglobal upload_NTC_plan       "*"             # when empty: existing NTCÂ´s are replaced by an investment plan from a previous model run, when (*): TYNDP NTCÂ´s
 
 
 $ifthen "%Startup%" == ""   $setglobal Exc_startup "*"
