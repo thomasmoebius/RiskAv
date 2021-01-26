@@ -75,9 +75,9 @@ $setglobal Invest_gas_LNG    "*"  #Investments in LNG infrastructure
 
                               #RELATED TO ELECTRICITY  MODEL
 
-$setglobal Store        "*"         #Storage
+$setglobal Store        "*"        #Storage
 $setglobal Shed         ""         #Load shedding
-$setglobal Trade        "*"         #Trade between markets
+$setglobal Trade        ""         #Trade between markets
 $setglobal Startup      "*"        #Startups
 $setglobal Invest_gen   ""         #Investment in generation capacity
 $setglobal Invest_NTC   "*"        #Investment in NTC capacity

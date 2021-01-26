@@ -15,6 +15,20 @@ SETS
     h50(t_all)
     h100(t_all)
     h200(t_all)
+
+    h25_1(t_all)
+    h25_3(t_all)
+    h25_5(t_all)
+    h25_7(t_all)
+    h25_9(t_all)
+    h25_11(t_all)
+    h25_13(t_all)
+    h25_15(t_all)
+    h25_17(t_all)
+    h25_19(t_all)
+    h25_21(t_all)
+    h25_23(t_all)
+    h25_25(t_all)
 ;
 
 SETS
@@ -61,11 +75,27 @@ $onecho > Import_time.txt
         set=h50     rng=time_periods!L2  rdim=1
         set=h100    rng=time_periods!N2  rdim=1
         set=h200    rng=time_periods!P2  rdim=1
+
+        set=h25_1    rng=time_periods_25!B2  rdim=1
+        set=h25_3    rng=time_periods_25!D2  rdim=1
+        set=h25_5    rng=time_periods_25!F2  rdim=1
+        set=h25_7    rng=time_periods_25!H2  rdim=1
+        set=h25_9    rng=time_periods_25!J2  rdim=1
+        set=h25_11   rng=time_periods_25!L2  rdim=1
+        set=h25_13   rng=time_periods_25!N2  rdim=1
+        set=h25_15   rng=time_periods_25!P2  rdim=1
+        set=h25_17   rng=time_periods_25!R2  rdim=1
+        set=h25_19   rng=time_periods_25!T2  rdim=1
+        set=h25_21   rng=time_periods_25!V2  rdim=1
+        set=h25_23   rng=time_periods_25!X2  rdim=1
+        set=h25_25   rng=time_periods_25!Z2  rdim=1
+
 $offecho
 
 $call GDXXRW I=%datadir%%DataIn%.xlsx O=%datadir%Time.gdx cmerge=1 @Import_time.txt
 $gdxin %datadir%Time.gdx
 $LOAD time, t, h1, h2, h4, h10, h25, h50, h100, h200
+$LOAD h25_1, h25_3, h25_5, h25_7, h25_9, h25_11, h25_13, h25_15, h25_17, h25_19, h25_21, h25_23, h25_25
 $gdxin
 
 *                               MAPPING TIME
