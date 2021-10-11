@@ -8,7 +8,7 @@
  Risk aversion, Energy storage, Interconnection, Demand response, Investment
  
 ### Links: 
-[Working paper at arXiv.org](...)
+[Working paper at arXiv.org](https://arxiv.org/abs/2110.04088)
 
 ### The code reproduces the benchmarks from the paper 
 Note that model output files are not uploaded to github due to limits on individual file size and on repository size in general. 
@@ -22,6 +22,12 @@ would cite us as follows:
 ```
 This paper is in review. The reference to the working paper version is as follows:
 
-@misc{work paper
+@misc{möbius2021risk,
+      title={Risk aversion in flexible electricity markets}, 
+      author={Thomas Möbius and Iegor Riepin and Felix Müsgens and Adriaan H. van der Weijde},
+      year={2021},
+      eprint={2110.04088},
+      archivePrefix={arXiv},
+      primaryClass={econ.GN}
 }
 ```
